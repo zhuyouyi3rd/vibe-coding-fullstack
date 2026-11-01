@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9dfc9"/>
+      <stop offset="1" stop-color="#d8c5a5"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f5747"/>
+      <stop offset="1" stop-color="#17392d"/>
+    </linearGradient>
+    <pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.7" fill="#1d2b26" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="880" cy="190" r="92" fill="#bd5f3e" opacity="0.9"/>
+  <path d="M0 520 C180 420 300 500 460 430 C620 360 740 430 900 390 C1040 355 1130 380 1200 340 L1200 675 L0 675 Z" fill="url(#hill)" opacity="0.92"/>
+  <path d="M0 590 C200 500 360 560 540 505 C720 450 900 520 1200 450 L1200 675 L0 675 Z" fill="#102b21" opacity="0.9"/>
+  <path d="M110 470 C240 390 330 440 430 380" stroke="#f4f0e6" stroke-width="2" fill="none" opacity="0.35"/>
+  <path d="M840 390 C930 350 1020 370 1120 330" stroke="#f4f0e6" stroke-width="2" fill="none" opacity="0.25"/>
+  <g opacity="0.85">
+    <text x="92" y="160" font-family="Songti SC, STSong, serif" font-size="26" fill="#1f4d3d" letter-spacing="8">山 中 寄 语</text>
+    <line x1="92" y1="186" x2="260" y2="186" stroke="#1f4d3d" stroke-width="1.5" opacity="0.5"/>
+    <text x="92" y="228" font-family="Songti SC, STSong, serif" font-size="14" fill="#1f4d3d" letter-spacing="4" opacity="0.65">NOTES FROM THE HILLS</text>
+  </g>
+  <rect width="1200" height="675" fill="url(#grain)" opacity="0.5"/>
+  <rect x="42" y="42" width="1116" height="591" fill="none" stroke="#1f4d3d" stroke-width="1" opacity="0.18"/>
+</svg>

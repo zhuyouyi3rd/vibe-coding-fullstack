@@ -1,0 +1,12 @@
+**/node_modules/
+**/dist/
+**/.runtime/
+**/.devdb/
+**/.npm-cache/
+**/.env
+**/.env.local
+**/.shots/
+**/*.log
+.logs/
+.tools/
+.DS_Store

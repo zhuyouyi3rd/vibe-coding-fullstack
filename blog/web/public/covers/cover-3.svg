@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3ead7"/>
+      <stop offset="1" stop-color="#dfd0b7"/>
+    </linearGradient>
+    <linearGradient id="arch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c97a5a"/>
+      <stop offset="1" stop-color="#a95033"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <path d="M710 675 L710 270 A180 180 0 0 1 1070 270 L1070 675 Z" fill="url(#arch)" opacity="0.92"/>
+  <path d="M770 675 L770 290 A120 120 0 0 1 1010 290 L1010 675 Z" fill="#f3ead7"/>
+  <circle cx="890" cy="250" r="46" fill="#1f4d3d"/>
+  <g opacity="0.9">
+    <text x="95" y="145" font-family="Songti SC, STSong, serif" font-size="20" fill="#1f4d3d" letter-spacing="7">WEEKLY NOTES</text>
+    <line x1="95" y1="175" x2="520" y2="175" stroke="#1f4d3d" opacity="0.35"/>
+    <text x="95" y="300" font-family="Songti SC, STSong, serif" font-size="66" fill="#1f4d3d" letter-spacing="4">把日子</text>
+    <text x="95" y="390" font-family="Songti SC, STSong, serif" font-size="66" fill="#1f4d3d" letter-spacing="4">过成一周</text>
+    <text x="95" y="465" font-family="Songti SC, STSong, serif" font-size="66" fill="#1f4d3d" letter-spacing="4">而不是一天</text>
+  </g>
+  <path d="M95 515 H480" stroke="#bd5f3e" stroke-width="4"/>
+  <text x="95" y="560" font-family="Cascadia Code, Consolas, monospace" font-size="13" fill="#1f4d3d" letter-spacing="3" opacity="0.6">A GENTLER WAY TO PLAN</text>
+  <g stroke="#1f4d3d" stroke-width="1" opacity="0.2">
+    <line x1="42" y1="42" x2="1158" y2="42"/>
+    <line x1="42" y1="633" x2="1158" y2="633"/>
+  </g>
+</svg>

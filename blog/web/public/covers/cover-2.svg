@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c3c30"/>
+      <stop offset="1" stop-color="#0f2a20"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#e9dfc9" stroke-width="0.7" opacity="0.13"/>
+    </pattern>
+    <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.8" fill="#e9dfc9" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <g opacity="0.9">
+    <rect x="110" y="120" width="330" height="330" fill="none" stroke="#d8cbb4" stroke-width="1.5"/>
+    <rect x="150" y="160" width="330" height="330" fill="none" stroke="#d8cbb4" stroke-width="1" opacity="0.45"/>
+    <circle cx="275" cy="285" r="78" fill="#bd5f3e" opacity="0.9"/>
+    <line x1="110" y1="450" x2="440" y2="450" stroke="#d8cbb4" stroke-width="1.5"/>
+  </g>
+  <g fill="#e9dfc9">
+    <text x="560" y="250" font-family="Cascadia Code, Consolas, monospace" font-size="15" letter-spacing="5" opacity="0.5">FIELD NOTES / 02</text>
+    <text x="560" y="330" font-family="Songti SC, STSong, serif" font-size="58" letter-spacing="6">在代码里</text>
+    <text x="560" y="408" font-family="Songti SC, STSong, serif" font-size="58" letter-spacing="6">修一条小路</text>
+    <line x1="560" y1="452" x2="1010" y2="452" stroke="#bd5f3e" stroke-width="3"/>
+    <text x="560" y="500" font-family="Cascadia Code, Consolas, monospace" font-size="13" letter-spacing="3" opacity="0.55">BUILD · BREAK · LEARN · REPEAT</text>
+  </g>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+</svg>

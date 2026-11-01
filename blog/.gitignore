@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+.runtime/
+.devdb/
+.npm-cache/
+*.log
+.DS_Store
