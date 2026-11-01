@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.env.local
+.runtime/
+.npm-cache/
+*.log
+.DS_Store
