@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ece5d4"/><stop offset="1" stop-color="#d4c7ae"/></linearGradient>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4eddb"/><stop offset="1" stop-color="#d9ccb1"/></linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="680" rx="230" ry="22" fill="#7c6a52" opacity="0.13"/>
+  <path d="M270 300 L530 300 L560 650 L240 650 Z" fill="url(#canvas)"/>
+  <path d="M300 300 C300 220 340 190 400 190 C460 190 500 220 500 300" stroke="#c6b494" stroke-width="18" fill="none"/>
+  <path d="M300 300 L500 300" stroke="#bda989" stroke-width="4"/>
+  <rect x="330" y="430" width="140" height="100" fill="none" stroke="#b55239" stroke-width="2" opacity="0.45"/>
+  <path d="M360 480 L440 480 M400 450 L400 510" stroke="#b55239" stroke-width="2" opacity="0.45"/>
+  <text x="400" y="610" text-anchor="middle" font-family="Songti SC, STSong, serif" font-size="26" fill="#5f6b4f" opacity="0.55" letter-spacing="8">云 市</text>
+  <text x="74" y="120" font-family="Songti SC, STSong, serif" font-size="26" fill="#4c4335" letter-spacing="6">厚帆布 · 托特包</text>
+  <text x="74" y="154" font-family="Cascadia Code, monospace" font-size="12" fill="#4c4335" letter-spacing="3" opacity="0.55">16 OZ / 38 × 34 CM</text>
+</svg>

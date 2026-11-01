@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2ead9"/><stop offset="1" stop-color="#e2d3bd"/></linearGradient>
+    <linearGradient id="cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f3e7"/><stop offset="1" stop-color="#e7dcc7"/></linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="640" rx="250" ry="28" fill="#8d7a60" opacity="0.13"/>
+  <path d="M180 300 L620 250 L640 590 L200 630 Z" fill="url(#cloth)"/>
+  <path d="M210 330 L610 285" stroke="#cdbfa8" stroke-width="3"/>
+  <path d="M215 390 L615 345" stroke="#cdbfa8" stroke-width="2"/>
+  <path d="M220 450 L620 405" stroke="#cdbfa8" stroke-width="2"/>
+  <path d="M225 510 L625 465" stroke="#cdbfa8" stroke-width="2"/>
+  <path d="M230 570 L630 525" stroke="#cdbfa8" stroke-width="2"/>
+  <path d="M600 260 C650 340 620 430 590 520 C570 575 600 600 625 610" stroke="#d9c9b2" stroke-width="8" fill="none"/>
+  <path d="M200 620 C300 590 500 570 640 590" stroke="#b55239" stroke-width="3" fill="none" opacity="0.5"/>
+  <text x="74" y="120" font-family="Songti SC, STSong, serif" font-size="26" fill="#5a5142" letter-spacing="6">原色 · 亚麻桌布</text>
+  <text x="74" y="154" font-family="Cascadia Code, monospace" font-size="12" fill="#5a5142" letter-spacing="3" opacity="0.55">140 × 220 CM / STONE WASHED</text>
+</svg>

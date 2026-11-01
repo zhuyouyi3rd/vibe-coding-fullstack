@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe4d2"/><stop offset="1" stop-color="#dccbb2"/></linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58654d"/><stop offset="1" stop-color="#39432f"/></linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="650" rx="220" ry="26" fill="#7c6a52" opacity="0.18"/>
+  <path d="M270 380 C270 300 330 260 400 260 C470 260 530 300 530 380 L530 560 C530 610 490 640 400 640 C310 640 270 610 270 560 Z" fill="url(#body)"/>
+  <path d="M300 350 C320 300 355 282 400 282" stroke="#efe4d2" stroke-width="10" opacity="0.25" fill="none"/>
+  <path d="M530 390 C620 390 630 470 575 500" stroke="#b55239" stroke-width="26" fill="none" stroke-linecap="round"/>
+  <path d="M400 260 C400 235 430 225 450 240" stroke="#39432f" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M335 250 L465 250" stroke="#39432f" stroke-width="12" stroke-linecap="round"/>
+  <path d="M360 210 C340 175 380 155 360 120" stroke="#fbf9f1" stroke-width="8" fill="none" opacity="0.7"/>
+  <path d="M420 210 C400 175 440 155 420 120" stroke="#fbf9f1" stroke-width="8" fill="none" opacity="0.5"/>
+  <text x="74" y="120" font-family="Songti SC, STSong, serif" font-size="26" fill="#414b35" letter-spacing="6">雾岭 · 手冲壶</text>
+  <text x="74" y="154" font-family="Cascadia Code, monospace" font-size="12" fill="#414b35" letter-spacing="3" opacity="0.55">600 ML / WALNUT HANDLE</text>
+</svg>

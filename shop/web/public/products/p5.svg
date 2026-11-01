@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7ddc9"/><stop offset="1" stop-color="#cebda0"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a97446"/><stop offset="1" stop-color="#714b2c"/></linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="560" rx="280" ry="150" fill="url(#wood)"/>
+  <ellipse cx="400" cy="540" rx="245" ry="122" fill="#c18b58"/>
+  <ellipse cx="400" cy="540" rx="205" ry="96" fill="#b17c4d"/>
+  <path d="M210 540 C290 500 510 500 590 540" stroke="#8d5c36" stroke-width="4" fill="none" opacity="0.6"/>
+  <path d="M250 570 C330 540 470 540 550 570" stroke="#8d5c36" stroke-width="3" fill="none" opacity="0.5"/>
+  <circle cx="330" cy="520" r="42" fill="#efe4d2" opacity="0.7"/>
+  <circle cx="470" cy="558" r="32" fill="#efe4d2" opacity="0.55"/>
+  <text x="74" y="120" font-family="Songti SC, STSong, serif" font-size="26" fill="#4c4335" letter-spacing="6">胡桃木 · 早餐托盘</text>
+  <text x="74" y="154" font-family="Cascadia Code, monospace" font-size="12" fill="#4c4335" letter-spacing="3" opacity="0.55">32 × 22 CM / FOOD SAFE OIL</text>
+</svg>
