@@ -80,7 +80,7 @@ for i, (num, name, brand, desc, url) in enumerate(cards):
     draw_text(draw, (x + 30, cy + 258), url, 15, ACCENT, True)
 
 draw_text(draw, (110, 1050), "验收材料  ·  2026 年 11 月", 18, MUTED)
-draw_text(draw, (W - 110, 1050), "01 / 12", 18, MUTED, anchor="ra")
+draw_text(draw, (W - 110, 1050), "01 / 15", 18, MUTED, anchor="ra")
 page.save(ROOT / "page-1.png")
 
 # ---------- Page 2: AI assessment ----------
@@ -98,7 +98,7 @@ page.paste(thumb, (shot_x, shot_y))
 
 draw_text(draw, (110, 1080), "AI 评估结果", 24, INK, True)
 draw_text(draw, (110, 1118), "来源：课程平台截图  ·  共作答 / 正确题量 / 正确率", 16, MUTED)
-draw_text(draw, (W - 110, 1118), "02 / 12", 18, MUTED, anchor="ra")
+draw_text(draw, (W - 110, 1118), "02 / 15", 18, MUTED, anchor="ra")
 page.save(ROOT / "page-2.png")
 
 # ---------- Pages 3-5: project screenshots ----------
@@ -141,7 +141,7 @@ for index, item in enumerate(projects, start=3):
     shot = Image.open(ROOT / item["file"])
     framed(page, shot, 110, 268, W - 220, H - 330)
     draw_text(draw, (110, H - 38), "首页截图 · 1440 × 1050", 13, MUTED)
-    draw_text(draw, (W - 110, H - 38), f"{index:02d} / 12", 15, MUTED, anchor="ra")
+    draw_text(draw, (W - 110, H - 38), f"{index:02d} / 15", 15, MUTED, anchor="ra")
     page.save(ROOT / f"page-{index}.png")
 
 # ---------- Pages 6-9: code-level evidence screenshots ----------
@@ -179,7 +179,7 @@ for i, (name, value) in enumerate(notes):
     draw_text(draw, (nx + 24, 1022), value, 16, ACCENT, True)
 
 draw_text(draw, (110, 1128), "以上截图为课程平台学习完成记录；Git 提交记录见上一页。", 15, MUTED)
-draw_text(draw, (W - 110, 1128), "10 / 12", 18, MUTED, anchor="ra")
+draw_text(draw, (W - 110, 1128), "10 / 15", 18, MUTED, anchor="ra")
 page.save(ROOT / "page-10.png")
 
 # ---------- Pages 11-12: quiz records ----------
@@ -220,11 +220,76 @@ for page_no, title, subtitle, items in quiz_pages:
         draw_text(draw, (x + img.width // 2, y + img.height + 22), caption, 17, INK, True, anchor="ma")
         x += img.width + gap
 
-    draw_text(draw, (W - 110, H - 38), f"{page_no:02d} / 12", 15, MUTED, anchor="ra")
+    draw_text(draw, (W - 110, H - 38), f"{page_no:02d} / 15", 15, MUTED, anchor="ra")
     draw_text(draw, (110, H - 38), "课程平台练习记录截图", 13, MUTED)
     page.save(ROOT / f"page-{page_no}.png")
 
-pages = [Image.open(ROOT / f"page-{i}.png").convert("RGB") for i in range(1, 13)]
+# ---------- Pages 13-15: GitHub version control ----------
+def github_page(page_no, title, subtitle, image_file, blocks):
+    page, draw = base_page()
+    draw_text(draw, (110, 64), "VERSION CONTROL · GITHUB", 16, ACCENT, True)
+    draw_text(draw, (110, 100), title, 40, INK, True)
+    draw_text(draw, (110, 158), subtitle, 16, MUTED)
+    draw.line([(110, 192), (W - 110, 192)], fill=LINE, width=1)
+
+    shot = Image.open(ROOT / image_file).convert("RGB")
+    thumb = fit(shot, 1120, 850)
+    img_x, img_y = 100, 220
+    draw.rectangle([img_x - 2, img_y - 2, img_x + thumb.width + 2, img_y + thumb.height + 2], fill="white", outline=LINE, width=2)
+    page.paste(thumb, (img_x, img_y))
+
+    tx = 1270
+    ty = 225
+    for heading, lines in blocks:
+        draw_text(draw, (tx, ty), heading, 17, ACCENT, True)
+        ty += 31
+        for line in lines:
+            draw_text(draw, (tx, ty), line, 13, INK, spacing=10)
+            ty += 24
+        ty += 18
+
+    draw_text(draw, (W - 110, H - 38), f"{page_no:02d} / 15", 15, MUTED, anchor="ra")
+    draw_text(draw, (110, H - 38), "GitHub 实际操作截图", 13, MUTED)
+    page.save(ROOT / f"page-{page_no}.png")
+
+
+github_page(
+    13,
+    "GitHub 仓库与版本管理",
+    "把本地 Git 仓库推送到 GitHub，建立远程跟踪关系。",
+    "github-repo.png",
+    [
+        ("仓库", ["github.com/zhuyouyi3rd", "vibe-coding-fullstack", "PUBLIC · 默认分支 master"]),
+        ("本次操作", ["01  本地 git init", "02  按项目拆分 commit", "03  GitHub 新建仓库", "04  remote add + push", "05  branch + PR + merge", "06  删除已合并分支"]),
+        ("结果", ["7 commits", "1 branch（master）", "本地与远程同步"]),
+    ],
+)
+
+github_page(
+    14,
+    "提交历史与分支管理",
+    "提交按项目拆分，功能改动在独立分支完成后再合并。",
+    "github-commits.png",
+    [
+        ("提交拆分", ["feat(blog)  个人博客", "feat(qa)  问答社区", "feat(shop)  在线商城", "docs  文档 / 验收 / PDF", "merge  Pull Request #1"]),
+        ("IDE 中怎么做", ["源代码管理 → + 暂存", "输入消息 → ✓ 提交", "分支名 → 新建 / 切换", "同步按钮 → pull / push"]),
+        ("规范", ["一个提交只做一件事", "提交信息写清模块与意图"]),
+    ],
+)
+
+github_page(
+    15,
+    "Pull Request 与合并",
+    "在 GitHub 上发起 PR，检查 diff 后合并到 master。",
+    "github-pr-merged.png",
+    [
+        ("Pull Request #1", ["base: master", "compare: docs/github-workflow", "1 commit · +108 lines", "Merged by zhuyouyi3rd"]),
+        ("合并结果", ["merge commit 771e874", "功能分支已删除", "当前仅 master 分支"]),
+        ("版本管理要点", ["分支隔离改动", "PR 审阅 diff", "合并后清理分支"]),
+    ],
+)
+
+pages = [Image.open(ROOT / f"page-{i}.png").convert("RGB") for i in range(1, 16)]
 pages[0].save(
     OUT,
     "PDF",

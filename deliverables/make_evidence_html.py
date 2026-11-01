@@ -52,7 +52,7 @@ def page(number, kicker, title, subtitle, inner):
         BASE
         + f'<div class="kicker">{kicker}</div><h1>{title}</h1><p class="sub">{subtitle}</p><div class="rule"></div>'
         + inner
-        + f'<div class="foot">全栈应用开发 · 三个项目验收材料</div><div class="pageno">{number:02d} / 12</div></div></body></html>'
+        + f'<div class="foot">全栈应用开发 · 三个项目验收材料</div><div class="pageno">{number:02d} / 15</div></div></body></html>'
     )
 
 # DB schema
