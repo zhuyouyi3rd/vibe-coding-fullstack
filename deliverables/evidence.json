@@ -1,0 +1,829 @@
+[
+  {
+    "key": "blog",
+    "label": "个人博客",
+    "db": "shiyu_blog",
+    "tables": [
+      {
+        "name": "categories",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "name",
+            "type": "varchar(50)",
+            "key": "UNI"
+          },
+          {
+            "name": "slug",
+            "type": "varchar(50)",
+            "key": "UNI"
+          },
+          {
+            "name": "description",
+            "type": "varchar(255)",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "posts",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "title",
+            "type": "varchar(200)",
+            "key": ""
+          },
+          {
+            "name": "content",
+            "type": "mediumtext",
+            "key": ""
+          },
+          {
+            "name": "cover",
+            "type": "varchar(500)",
+            "key": ""
+          },
+          {
+            "name": "category_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "tags",
+            "type": "longtext",
+            "key": ""
+          },
+          {
+            "name": "author_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "views",
+            "type": "int(10) unsigned",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": "MUL"
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "username",
+            "type": "varchar(50)",
+            "key": "UNI"
+          },
+          {
+            "name": "email",
+            "type": "varchar(255)",
+            "key": "UNI"
+          },
+          {
+            "name": "password_hash",
+            "type": "varchar(255)",
+            "key": ""
+          },
+          {
+            "name": "avatar",
+            "type": "varchar(500)",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "method": "GET",
+        "path": "/api/health",
+        "auth": "公开"
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/register",
+        "auth": "公开"
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/categories",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/posts",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/posts/:id",
+        "auth": "公开"
+      },
+      {
+        "method": "POST",
+        "path": "/api/posts",
+        "auth": "需登录"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/posts/:id",
+        "auth": "需登录"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/posts/:id",
+        "auth": "需登录"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/users/me",
+        "auth": "需登录"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/users/me/password",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/users/:id",
+        "auth": "公开"
+      }
+    ]
+  },
+  {
+    "key": "qa",
+    "label": "问答社区",
+    "db": "wenqu_qa",
+    "tables": [
+      {
+        "name": "answers",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "content",
+            "type": "mediumtext",
+            "key": ""
+          },
+          {
+            "name": "question_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "author_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "votes",
+            "type": "int(11)",
+            "key": ""
+          },
+          {
+            "name": "is_accepted",
+            "type": "tinyint(1)",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "questions",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "title",
+            "type": "varchar(160)",
+            "key": ""
+          },
+          {
+            "name": "content",
+            "type": "mediumtext",
+            "key": ""
+          },
+          {
+            "name": "tags",
+            "type": "longtext",
+            "key": ""
+          },
+          {
+            "name": "author_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "views",
+            "type": "int(10) unsigned",
+            "key": ""
+          },
+          {
+            "name": "answers_count",
+            "type": "int(10) unsigned",
+            "key": ""
+          },
+          {
+            "name": "votes",
+            "type": "int(11)",
+            "key": "MUL"
+          },
+          {
+            "name": "is_solved",
+            "type": "tinyint(1)",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": "MUL"
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "username",
+            "type": "varchar(50)",
+            "key": "UNI"
+          },
+          {
+            "name": "email",
+            "type": "varchar(255)",
+            "key": "UNI"
+          },
+          {
+            "name": "password_hash",
+            "type": "varchar(255)",
+            "key": ""
+          },
+          {
+            "name": "avatar",
+            "type": "varchar(500)",
+            "key": ""
+          },
+          {
+            "name": "points",
+            "type": "int(11)",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "votes",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "user_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "target_type",
+            "type": "enum('question','answer')",
+            "key": "MUL"
+          },
+          {
+            "name": "target_id",
+            "type": "int(10) unsigned",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "method": "GET",
+        "path": "/api/health",
+        "auth": "公开"
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/register",
+        "auth": "公开"
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/tags",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/stats",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/leaderboard",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/questions",
+        "auth": "可选"
+      },
+      {
+        "method": "GET",
+        "path": "/api/questions/:id",
+        "auth": "可选"
+      },
+      {
+        "method": "POST",
+        "path": "/api/questions",
+        "auth": "需登录"
+      },
+      {
+        "method": "POST",
+        "path": "/api/questions/:id/answers",
+        "auth": "需登录"
+      },
+      {
+        "method": "POST",
+        "path": "/api/questions/:id/vote",
+        "auth": "需登录"
+      },
+      {
+        "method": "POST",
+        "path": "/api/questions/:id/accept",
+        "auth": "需登录"
+      },
+      {
+        "method": "POST",
+        "path": "/api/answers/:id/vote",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/users/me",
+        "auth": "需登录"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/users/me",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/users/:id",
+        "auth": "公开"
+      }
+    ]
+  },
+  {
+    "key": "shop",
+    "label": "在线商城",
+    "db": "yunshi_shop",
+    "tables": [
+      {
+        "name": "addresses",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "user_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "name",
+            "type": "varchar(50)",
+            "key": ""
+          },
+          {
+            "name": "phone",
+            "type": "varchar(30)",
+            "key": ""
+          },
+          {
+            "name": "province",
+            "type": "varchar(40)",
+            "key": ""
+          },
+          {
+            "name": "city",
+            "type": "varchar(40)",
+            "key": ""
+          },
+          {
+            "name": "district",
+            "type": "varchar(40)",
+            "key": ""
+          },
+          {
+            "name": "detail",
+            "type": "varchar(255)",
+            "key": ""
+          },
+          {
+            "name": "is_default",
+            "type": "tinyint(1)",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "cart_items",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "user_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "product_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "quantity",
+            "type": "int(10) unsigned",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "orders",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "order_no",
+            "type": "varchar(32)",
+            "key": "UNI"
+          },
+          {
+            "name": "user_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "address_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "address_snapshot",
+            "type": "longtext",
+            "key": ""
+          },
+          {
+            "name": "total_price",
+            "type": "decimal(10,2)",
+            "key": ""
+          },
+          {
+            "name": "shipping_fee",
+            "type": "decimal(10,2)",
+            "key": ""
+          },
+          {
+            "name": "status",
+            "type": "enum('pending','paid','shipped','completed','cancelled')",
+            "key": "MUL"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "order_items",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "order_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "product_id",
+            "type": "int(10) unsigned",
+            "key": "MUL"
+          },
+          {
+            "name": "product_name",
+            "type": "varchar(120)",
+            "key": ""
+          },
+          {
+            "name": "product_image",
+            "type": "varchar(500)",
+            "key": ""
+          },
+          {
+            "name": "quantity",
+            "type": "int(10) unsigned",
+            "key": ""
+          },
+          {
+            "name": "price",
+            "type": "decimal(10,2)",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "products",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "name",
+            "type": "varchar(120)",
+            "key": ""
+          },
+          {
+            "name": "description",
+            "type": "text",
+            "key": ""
+          },
+          {
+            "name": "price",
+            "type": "decimal(10,2)",
+            "key": "MUL"
+          },
+          {
+            "name": "stock",
+            "type": "int(10) unsigned",
+            "key": ""
+          },
+          {
+            "name": "images",
+            "type": "longtext",
+            "key": ""
+          },
+          {
+            "name": "category",
+            "type": "varchar(40)",
+            "key": "MUL"
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "columns": [
+          {
+            "name": "id",
+            "type": "int(10) unsigned",
+            "key": "PRI"
+          },
+          {
+            "name": "username",
+            "type": "varchar(50)",
+            "key": "UNI"
+          },
+          {
+            "name": "email",
+            "type": "varchar(255)",
+            "key": "UNI"
+          },
+          {
+            "name": "password_hash",
+            "type": "varchar(255)",
+            "key": ""
+          },
+          {
+            "name": "avatar",
+            "type": "varchar(500)",
+            "key": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "key": ""
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "method": "GET",
+        "path": "/api/health",
+        "auth": "公开"
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/register",
+        "auth": "公开"
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/auth/me",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/products",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/products/:id",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/categories",
+        "auth": "公开"
+      },
+      {
+        "method": "GET",
+        "path": "/api/cart",
+        "auth": "需登录"
+      },
+      {
+        "method": "POST",
+        "path": "/api/cart",
+        "auth": "需登录"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/cart/:id",
+        "auth": "需登录"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/cart/:id",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/addresses",
+        "auth": "需登录"
+      },
+      {
+        "method": "POST",
+        "path": "/api/addresses",
+        "auth": "需登录"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/addresses/:id",
+        "auth": "需登录"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/addresses/:id",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/orders",
+        "auth": "需登录"
+      },
+      {
+        "method": "POST",
+        "path": "/api/orders",
+        "auth": "需登录"
+      },
+      {
+        "method": "GET",
+        "path": "/api/orders/:id",
+        "auth": "需登录"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/orders/:id/cancel",
+        "auth": "需登录"
+      }
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}html,body{margin:0;width:1754px;height:1240px}
+body{background:#f7f3e9;color:#1e2c28;font-family:"Microsoft YaHei","PingFang SC",sans-serif;overflow:hidden}
+body:before{content:"";position:fixed;left:0;top:0;bottom:0;width:18px;background:#173f35}
+.page{position:relative;width:100%;height:100%;padding:64px 96px 50px}
+.kicker{font-size:15px;letter-spacing:.18em;color:#a74a32;font-weight:700}
+h1{font-size:38px;line-height:1.2;margin:10px 0 4px;letter-spacing:-.02em}
+.sub{font-size:15px;color:#5f6b64;margin:0}
+.rule{height:1px;background:#d8d1c0;margin:24px 0 20px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cols.two{grid-template-columns:repeat(2,1fr)}
+.tables2{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.proj{background:#fcfaf3;border:1px solid #d8d1c0;border-radius:10px;padding:16px 16px 12px}
+.proj h2{font-size:19px;margin:0 0 2px}.db{font:12px Consolas,monospace;color:#a74a32;margin-bottom:12px}
+.table{border-top:1px dashed #d8d1c0;padding:8px 0 6px}
+.table h3{font:700 13px Consolas,monospace;margin:0 0 4px;color:#173f35}
+.field{display:flex;justify-content:space-between;gap:8px;font:11px/1.55 Consolas,monospace;color:#4e5a53}
+.field .type{color:#8d897b;white-space:nowrap}.key{color:#a74a32;font-size:9px;margin-left:3px}
+.route{display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px dotted #e4ddcb;font:11.5px Consolas,monospace}
+.method{width:42px;text-align:center;border-radius:3px;padding:1px 0;font-size:9px;font-weight:700;color:white}
+.get{background:#3d7b66}.post{background:#a74a32}.put{background:#9b762d}.delete{background:#8f3a26}
+.path{flex:1;color:#26332d}.auth{font:10px "Microsoft YaHei";color:#8a8578}
+.pageno{position:absolute;right:96px;bottom:28px;font:14px Consolas,monospace;color:#6b6a5e}
+.foot{position:absolute;left:96px;bottom:28px;font-size:13px;color:#6b6a5e}
+</style></head><body><div class="page"><div class="kicker">VERSION CONTROL EVIDENCE</div><h1>Git 提交记录</h1><p class="sub">三个项目分别提交；以下为本地仓库真实 git log 输出。</p><div class="rule"></div>
+<div class="proj" style="background:#14211d;border-color:#2d3c35;padding:20px 24px">
+<div style="font:12px Consolas,monospace;color:#7f968a;margin-bottom:10px">$ git log --graph --oneline --decorate --all</div>
+<div style="font:17px/1.9 Consolas,monospace"><div style="color:#a6d8b8">* 9caf456 (HEAD -&gt; master) docs: add project overview, acceptance capture and PDF</div><div style="color:#a6d8b8">* 09988f2 feat(shop): complete mini mall with cart and orders</div><div style="color:#a6d8b8">* abec84c feat(qa): complete Q&amp;A community with points and voting</div><div style="color:#a6d8b8">* c23be14 feat(blog): complete personal blog full-stack application</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px">
+<div class="proj"><h2>4 commits</h2><div class="db">按项目拆分提交</div></div>
+<div class="proj"><h2>224 files</h2><div class="db">Git 跟踪的源码与文档</div></div>
+<div class="proj"><h2>42 / 42 tests</h2><div class="db">17 + 15 + 10 全部通过</div></div>
+</div>
+<div class="proj" style="margin-top:18px">
+<h2 style="font-size:17px">提交拆分</h2>
+<div class="db">每个 commit 对应一个可独立运行的全栈应用</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 30px;font:12px/1.8 Consolas,monospace;color:#4e5a53">
+<div>c23be14 · blog · 17 API tests</div><div>abec84c · qa · 15 API tests</div>
+<div>09988f2 · shop · 10 API tests</div><div>9caf456 · docs + acceptance PDF</div>
+</div>
+</div>
+<div class="foot">全栈应用开发 · 三个项目验收材料</div><div class="pageno">09 / 12</div></div></body></html>

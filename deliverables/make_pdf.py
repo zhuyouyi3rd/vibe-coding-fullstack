@@ -80,7 +80,7 @@ for i, (num, name, brand, desc, url) in enumerate(cards):
     draw_text(draw, (x + 30, cy + 258), url, 15, ACCENT, True)
 
 draw_text(draw, (110, 1050), "验收材料  ·  2026 年 11 月", 18, MUTED)
-draw_text(draw, (W - 110, 1050), "01 / 05", 18, MUTED, anchor="ra")
+draw_text(draw, (W - 110, 1050), "01 / 12", 18, MUTED, anchor="ra")
 page.save(ROOT / "page-1.png")
 
 # ---------- Page 2: AI assessment ----------
@@ -98,7 +98,7 @@ page.paste(thumb, (shot_x, shot_y))
 
 draw_text(draw, (110, 1080), "AI 评估结果", 24, INK, True)
 draw_text(draw, (110, 1118), "来源：课程平台截图  ·  共作答 / 正确题量 / 正确率", 16, MUTED)
-draw_text(draw, (W - 110, 1118), "02 / 05", 18, MUTED, anchor="ra")
+draw_text(draw, (W - 110, 1118), "02 / 12", 18, MUTED, anchor="ra")
 page.save(ROOT / "page-2.png")
 
 # ---------- Pages 3-5: project screenshots ----------
@@ -141,10 +141,90 @@ for index, item in enumerate(projects, start=3):
     shot = Image.open(ROOT / item["file"])
     framed(page, shot, 110, 268, W - 220, H - 330)
     draw_text(draw, (110, H - 38), "首页截图 · 1440 × 1050", 13, MUTED)
-    draw_text(draw, (W - 110, H - 38), f"{index:02d} / 05", 15, MUTED, anchor="ra")
+    draw_text(draw, (W - 110, H - 38), f"{index:02d} / 12", 15, MUTED, anchor="ra")
     page.save(ROOT / f"page-{index}.png")
 
-pages = [Image.open(ROOT / f"page-{i}.png").convert("RGB") for i in range(1, 6)]
+# ---------- Pages 6-9: code-level evidence screenshots ----------
+for page_no, filename in [
+    (6, "evidence-db.png"),
+    (7, "evidence-db-shop.png"),
+    (8, "evidence-api.png"),
+    (9, "evidence-git.png"),
+]:
+    evidence = Image.open(ROOT / filename).convert("RGB")
+    evidence.save(ROOT / f"page-{page_no}.png")
+
+# ---------- Page 10: GitHub / Git course completion ----------
+page, draw = base_page()
+draw_text(draw, (110, 88), "LEARNING RECORD", 17, ACCENT, True)
+draw_text(draw, (110, 128), "GitHub 与 Git 基础学习", 46, INK, True)
+draw_text(draw, (110, 194), "课程平台学习记录：GitHub 的使用方法、GIT 入门教程均已完成。", 19, MUTED)
+
+learning = Image.open(ROOT / "git-learning.png").convert("RGB")
+thumb = fit(learning, 1534, 620)
+x = (W - thumb.width) // 2
+y = 260
+draw.rectangle([x - 2, y - 2, x + thumb.width + 2, y + thumb.height + 2], fill="white", outline=LINE, width=2)
+page.paste(thumb, (x, y))
+
+notes = [
+    ("GitHub 的使用方法", "已完成"),
+    ("GIT 入门教程", "已完成"),
+    ("本地仓库", "4 次项目提交"),
+]
+for i, (name, value) in enumerate(notes):
+    nx = 110 + i * 520
+    draw.rounded_rectangle([nx, 960, nx + 480, 1080], radius=10, fill="#fcfaf3", outline=LINE, width=1)
+    draw_text(draw, (nx + 24, 980), name, 20, INK, True)
+    draw_text(draw, (nx + 24, 1022), value, 16, ACCENT, True)
+
+draw_text(draw, (110, 1128), "以上截图为课程平台学习完成记录；Git 提交记录见上一页。", 15, MUTED)
+draw_text(draw, (W - 110, 1128), "10 / 12", 18, MUTED, anchor="ra")
+page.save(ROOT / "page-10.png")
+
+# ---------- Pages 11-12: quiz records ----------
+quiz_pages = [
+    (
+        11,
+        "课程练习记录（一）",
+        "Vibe Coding 与 AI 编程概念练习：第 1 题、第 3 题。",
+        [("quiz-01.jpg", "第 1 / 15 题"), ("quiz-03.jpg", "第 3 / 15 题")],
+    ),
+    (
+        12,
+        "课程练习记录（二）",
+        "Vibe Coding 与 AI 编程概念练习：第 4 题、第 5 题。",
+        [("quiz-04.jpg", "第 4 / 15 题"), ("quiz-05.jpg", "第 5 / 15 题")],
+    ),
+]
+
+for page_no, title, subtitle, items in quiz_pages:
+    page, draw = base_page()
+    draw_text(draw, (110, 70), "LEARNING RECORD · QUIZ", 17, ACCENT, True)
+    draw_text(draw, (110, 108), title, 42, INK, True)
+    draw_text(draw, (110, 168), subtitle, 17, MUTED)
+    draw.line([(110, 205), (W - 110, 205)], fill=LINE, width=1)
+
+    images = []
+    for filename, caption in items:
+        source = Image.open(ROOT / filename).convert("RGB")
+        images.append((fit(source, 470, 930), caption))
+
+    gap = 150
+    total_width = sum(img.width for img, _ in images) + gap
+    x = (W - total_width) // 2
+    for img, caption in images:
+        y = 228
+        draw.rectangle([x - 2, y - 2, x + img.width + 2, y + img.height + 2], fill="white", outline=LINE, width=2)
+        page.paste(img, (x, y))
+        draw_text(draw, (x + img.width // 2, y + img.height + 22), caption, 17, INK, True, anchor="ma")
+        x += img.width + gap
+
+    draw_text(draw, (W - 110, H - 38), f"{page_no:02d} / 12", 15, MUTED, anchor="ra")
+    draw_text(draw, (110, H - 38), "课程平台练习记录截图", 13, MUTED)
+    page.save(ROOT / f"page-{page_no}.png")
+
+pages = [Image.open(ROOT / f"page-{i}.png").convert("RGB") for i in range(1, 13)]
 pages[0].save(
     OUT,
     "PDF",
