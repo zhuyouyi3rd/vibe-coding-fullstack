@@ -1,23 +1,23 @@
 {
-  "name": "客单簿 · 人情往来，一簿记清",
-  "short_name": "客单簿",
-  "description": "红白喜事客单记录，拍照识别，按主人家归类查询。",
+  "name": "客单簿 · 静态演示",
+  "short_name": "客单簿演示",
+  "description": "客单与礼簿静态演示，搜索、补录和 Excel 导入在浏览器本地运行。",
   "lang": "zh-CN",
-  "start_url": "/#/schedule",
-  "scope": "/",
+  "start_url": "./#/schedule",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#f8efda",
   "theme_color": "#a92b22",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
