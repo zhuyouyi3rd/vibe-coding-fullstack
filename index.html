@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#a92b22">
+  <meta name="description" content="客单簿静态演示：日程、客单查询、礼簿搜索与 Excel 导入。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="客单簿">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>客单簿 · 静态演示</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/demo.css">
+</head>
+<body>
+  <div class="demo-strip">
+    <span><strong>静态演示版</strong> · 搜索/补录/Excel 导入可用 · 数据只保存在本浏览器 · 图片 OCR 请用本地完整版</span>
+    <span class="demo-strip-actions">
+      <a href="https://github.com/zhuyouyi3rd/vibe-coding-fullstack" target="_blank" rel="noreferrer">源码</a>
+      <button type="button" data-demo-reset>重置演示数据</button>
+    </span>
+  </div>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 4-6.4 8-6.4s7.2 2.2 8 6.4"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="4"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/><path d="m13.5 7 3.5 3.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5.2-8 12-8 12S4 15.2 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 9 5 5 5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 6"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 4H4v16h6M14 8l4 4-4 4M8 12h10"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4"/><path d="M7 12h10"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m4 17 5-4 4 3 3-2 4 4"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 9a7 7 0 0 1 11.6-2L20 12M4 12l2.3 5a7 7 0 0 0 11.6-2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c.7-4 3.5-6 7-6s6.3 2 7 6"/><path d="M16 5.2a3.4 3.4 0 0 1 0 6.6M18 14c2.3.6 3.7 2.5 4 5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h7"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.5 3.2 7.7 7.5 9 4.3-1.3 7.5-4.5 7.5-9V6L12 3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></symbol>
+    <symbol id="i-camera-flip" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><path d="M9 14a3 3 0 0 0 5.5 1.7M15 14a3 3 0 0 0-5.5-1.7"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
+    <symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 6c-2-2-5-2.5-8-1.5V20c3-1 6-.5 8 1.5 2-2 5-2.5 8-1.5V4.5C17 3.5 14 4 12 6Z"/><path d="M12 6v15.5"/></symbol>
+  </svg>
+
+  <div id="authScreen" class="auth-screen">
+    <section class="auth-brand" aria-label="客单簿介绍">
+      <div class="auth-brand-inner">
+        <div class="brand-lockup">
+          <span class="brand-seal" aria-hidden="true">客</span>
+          <span class="brand-name">客单簿</span>
+        </div>
+        <p class="auth-kicker">人情往来 · 一簿记清</p>
+        <h1>谁家的事，<br>哪天、在哪，<br><em>一翻就到。</em></h1>
+        <p class="auth-lead">红白喜事收到客单，拍张照片就能记下来。按主人家归档，往后查人情，不再凭记忆。</p>
+        <ul class="auth-features">
+          <li><span><svg class="icon"><use href="#i-camera"></use></svg></span><div><strong>拍照记客单</strong><p>名字、地点、时间自动填，您核对一遍再保存。</p></div></li>
+          <li><span><svg class="icon"><use href="#i-users"></use></svg></span><div><strong>按主人家查</strong><p>搜儿子、父亲、爷爷的名字，都能找到同一家人。</p></div></li>
+          <li><span><svg class="icon"><use href="#i-shield"></use></svg></span><div><strong>只存自己的账</strong><p>登录后长期保存，同一账号下次打开还是这些内容。</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-mobile-brand">
+          <span class="brand-seal">客</span>
+          <span class="auth-mobile-title">客单簿<small>人情往来，一簿记清</small></span>
+        </div>
+        <div class="auth-tabs" role="tablist" aria-label="登录或新建账本">
+          <button class="auth-tab is-active" id="tabLogin" type="button" role="tab" aria-selected="true">登录我的账本</button>
+          <button class="auth-tab" id="tabRegister" type="button" role="tab" aria-selected="false">第一次使用</button>
+        </div>
+
+        <div id="authError" class="form-alert" role="alert" hidden></div>
+
+        <form id="loginForm" class="auth-form" autocomplete="on">
+          <div class="auth-form-head">
+            <h2>欢迎回来</h2>
+            <p>输入您的登录名和 4 位数字密码。</p>
+          </div>
+          <label class="field">
+            <span class="field-label">登录名</span>
+            <input class="input input-lg" id="loginName" name="login" autocomplete="username" placeholder="手机号或您起的名字" required>
+          </label>
+          <label class="field">
+            <span class="field-label">4 位数字密码</span>
+            <input class="input input-lg pin-input" id="loginPin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="current-password" placeholder="••••" required>
+          </label>
+          <button class="btn btn-primary btn-xl btn-block" type="submit">打开我的客单簿</button>
+          <p class="auth-footnote"><svg class="icon"><use href="#i-shield"></use></svg> 账本只保存在这台电脑上，不会传到网上。</p>
+        </form>
+
+        <form id="registerForm" class="auth-form" autocomplete="on" hidden>
+          <div class="auth-form-head">
+            <h2>建一本自己的账</h2>
+            <p>不用手机验证，填三样就能开始。</p>
+          </div>
+          <label class="field">
+            <span class="field-label">怎么称呼您</span>
+            <input class="input input-lg" id="regDisplayName" name="displayName" maxlength="20" autocomplete="nickname" placeholder="例如：林见山" required>
+          </label>
+          <label class="field">
+            <span class="field-label">登录名</span>
+            <input class="input input-lg" id="regLogin" name="login" maxlength="30" autocomplete="username" placeholder="手机号或好记的名字" required>
+            <span class="field-help">下次就用它登录，请记牢。</span>
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">设 4 位密码</span>
+              <input class="input input-lg pin-input" id="regPin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="new-password" placeholder="••••" required>
+            </label>
+            <label class="field">
+              <span class="field-label">再输一次</span>
+              <input class="input input-lg pin-input" id="regPin2" name="pin2" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="new-password" placeholder="••••" required>
+            </label>
+          </div>
+          <button class="btn btn-primary btn-xl btn-block" type="submit">建好，开始记客单</button>
+          <p class="auth-footnote"><svg class="icon"><use href="#i-shield"></use></svg> 建议用自己的手机号当登录名，好记又不容易重。</p>
+        </form>
+
+        <div class="demo-card">
+          <div>
+            <strong>先看看是什么样</strong>
+            <p>用示例账本走一遍，不会动您的真实记录。</p>
+          </div>
+          <button id="demoLogin" class="btn btn-gold" type="button">进入示例</button>
+        </div>
+      </div>
+      <p class="auth-copyright">客单簿 · 给家里人用的客单记录本</p>
+    </section>
+  </div>
+
+  <div id="appShell" class="app-shell" hidden>
+    <header class="topbar">
+      <a class="topbar-brand" href="#/schedule" aria-label="回到日程首页">
+        <span class="brand-seal brand-seal-sm" aria-hidden="true">客</span>
+        <span class="topbar-brand-text"><strong>客单簿</strong><small>人情往来，一簿记清</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="主要页面">
+        <a href="#/schedule" data-nav="schedule"><svg class="icon"><use href="#i-calendar"></use></svg>日程</a>
+        <a href="#/search" data-nav="search"><svg class="icon"><use href="#i-search"></use></svg>查客单</a>
+        <a href="#/giftbook" data-nav="giftbook"><svg class="icon"><use href="#i-book-open"></use></svg>礼簿</a>
+        <a href="#/new" data-nav="new" class="nav-record"><svg class="icon"><use href="#i-plus"></use></svg>记一笔</a>
+        <a href="#/me" data-nav="me"><svg class="icon"><use href="#i-user"></use></svg>我的</a>
+      </nav>
+      <a class="user-chip" href="#/me" aria-label="打开我的账本">
+        <span id="topbarAvatar" class="avatar">林</span>
+        <span id="topbarName" class="user-chip-name">林见山</span>
+      </a>
+    </header>
+
+    <main id="mainContent" class="main-content">
+      <section id="viewSchedule" class="view" data-view="schedule" hidden></section>
+      <section id="viewSearch" class="view" data-view="search" hidden></section>
+      <section id="viewGiftbook" class="view" data-view="giftbook" hidden></section>
+      <section id="viewRecord" class="view" data-view="record" hidden></section>
+      <section id="viewProfile" class="view" data-view="profile" hidden></section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要页面">
+      <a href="#/schedule" data-nav="schedule"><svg class="icon"><use href="#i-calendar"></use></svg><span>日程</span></a>
+      <a href="#/search" data-nav="search"><svg class="icon"><use href="#i-search"></use></svg><span>查客单</span></a>
+      <a href="#/giftbook" data-nav="giftbook"><svg class="icon"><use href="#i-book-open"></use></svg><span>礼簿</span></a>
+      <a href="#/new" data-nav="new" class="bottom-nav-record"><span class="bottom-nav-plus"><svg class="icon"><use href="#i-plus"></use></svg></span><span>记一笔</span></a>
+      <a href="#/me" data-nav="me"><svg class="icon"><use href="#i-user"></use></svg><span>我的</span></a>
+    </nav>
+  </div>
+
+  <dialog id="eventDialog" class="modal event-modal" aria-labelledby="eventDialogTitle"></dialog>
+  <dialog id="giftDialog" class="modal gift-modal" aria-labelledby="giftDialogTitle"></dialog>
+  <dialog id="confirmDialog" class="modal confirm-modal" aria-labelledby="confirmTitle"></dialog>
+  <div id="toastRoot" class="toast-root" role="status" aria-live="polite"></div>
+  <div id="busyOverlay" class="busy-overlay" hidden>
+    <div class="busy-box"><span class="spinner" aria-hidden="true"></span><strong id="busyText">正在保存…</strong></div>
+  </div>
+
+  <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden>
+  <input type="file" id="galleryInput" accept="image/*" hidden>
+  <input type="file" id="giftFileInput" accept=".xlsx,.csv,image/jpeg,image/png,image/webp" hidden>
+
+  <noscript><p class="noscript">请打开浏览器里的 JavaScript，才能使用客单簿。</p></noscript>
+  <script src="/giftbook-parse.js" defer></script>
+  <script src="/mock-api.js" defer></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>
